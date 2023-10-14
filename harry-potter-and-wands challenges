@@ -1,0 +1,13 @@
+Link: https://www.hackerrank.com/challenges/harry-potter-and-wands/problem?isFullScreen=true
+
+Solution:- 
+
+Select id,age,coins_needed,power from
+(Select id,age,coins_needed,power,
+row_number() over(partition by age,power order by coins_needed) rnk
+from Wands
+inner join Wands_Property
+on Wands.code=Wands_Property.code
+and is_evil = 0)
+Where rnk = 1
+order by power desc,age desc;
