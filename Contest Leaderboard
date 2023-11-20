@@ -1,0 +1,17 @@
+Problem Statement:-
+https://www.hackerrank.com/challenges/contest-leaderboard/problem?isFullScreen=true
+
+My Solution:-
+
+With cte as
+(select hacker_id,challenge_id,max(score)as score
+from submissions 
+group by hacker_id,challenge_id)
+select h.hacker_id,h.name,sum(score) as total_score
+from hackers h
+inner join cte s
+on h.hacker_id = s.hacker_id
+group by h.hacker_id,h.name
+having sum(score)>0 
+order by total_score desc,h.hacker_id;
+
