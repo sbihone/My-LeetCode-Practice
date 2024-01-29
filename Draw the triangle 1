@@ -1,0 +1,20 @@
+Problem:- https://www.hackerrank.com/challenges/draw-the-triangle-1/problem
+P(R) represents a pattern drawn by Julia in R rows. The following pattern represents P(5):
+
+* * * * * 
+* * * * 
+* * * 
+* * 
+*
+Write a query to print the pattern P(20).
+
+--My Oracle Solution:- 
+
+SELECT LPAD('* ', 42-LEVEL*2, '* ')
+FROM dual
+CONNECT BY LEVEL <=20;
+
+take away:
+
+https://www.geeksforgeeks.org/display-sequence-of-numbers-in-sql-using-level/
+https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/LPAD.html#GUID-0C27B59A-A6CF-43D3-BF4B-07A3D0F2CE20
